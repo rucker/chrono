@@ -1,5 +1,5 @@
 Chrono: a simple Pebble app I wrote for a marriage proposal.
-=================
+-----------------
 PURPOSE
 -----------------
 The purpose was simple: I wanted a way to propose to my girlfriend that was 1) romantic 2) not TOO romantic 3) played on common interests of ours and 4) was a little geeky. 
