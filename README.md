@@ -12,4 +12,6 @@ The design is very simple: the app, which runs as a fullscreen standalone app (a
 
 I chose Chrono Trigger, the classic SNES RPG, as a theme for two reasons: First, she and I grew up playing a lot of video games and Chrono Trigger was always a favorite of ours. We discovered this fact the night we met, much to our mutual delight. Second, the Chrono (time) theme was apt considering the fact that the app was to run on a watch.
 
+Most of the original proposal text has been removed from the source code because hey, some things have to remain private.
+
 Enjoy!
