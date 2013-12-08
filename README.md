@@ -1,5 +1,4 @@
 Chrono: a simple Pebble app I wrote for a marriage proposal.
-Written by Rick Ucker (rucker@github)
 =================
 PURPOSE
 -----------------
