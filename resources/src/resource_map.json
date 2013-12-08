@@ -1,0 +1,21 @@
+
+{"friendlyVersion": "1.0",
+ "versionDefName": "CHRONO_IMAGE_RESOURCES",
+ "media": [
+	   {
+	    "type":"png-trans",
+	    "defName":"CRONO",
+	    "file":"images/Crono.png"
+	   },
+           {
+            "type":"png-trans",
+            "defName":"MASAMUNE",
+            "file":"images/Masamune.png"
+           },
+           {
+            "type":"png-trans",
+            "defName":"LUCCA",
+            "file":"images/Lucca.png"
+           }
+	  ]
+}
