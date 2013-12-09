@@ -14,4 +14,6 @@ I chose Chrono Trigger, the classic SNES RPG, as a theme for two reasons: First,
 
 Most of the original proposal text has been removed from the source code because hey, some things have to remain private.
 
+I also am not providing the image files I used because I do not own them.
+
 Enjoy!
