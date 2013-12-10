@@ -8,7 +8,7 @@ To meet these goals, I designed Chrono. I chose to do this for the reasons above
 
 DESIGN
 -----------------
-The design is very simple: the app, which runs as a fullscreen standalone app (as opposed to a watchface). The proposal is displayed as scrollable text.
+The design is very simple: the app runs as a fullscreen standalone app (as opposed to a watchface). The proposal is displayed as scrollable text beneath the image of two video game characters I chose to represent myself and my financée.
 
 I chose Chrono Trigger, the classic SNES RPG, as a theme for two reasons: First, she and I grew up playing a lot of video games and Chrono Trigger was always a favorite of ours. We discovered this fact the night we met, much to our mutual delight. Second, the Chrono (time) theme was apt considering the fact that the app was to run on a watch.
 
