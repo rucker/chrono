@@ -1,0 +1,31 @@
+{
+  "uuid": "769f72a8-8851-4aa1-b8d9-fb74f545e2a7",
+  "shortName": "Chrono",
+  "longName": "Chrono",
+  "companyName": "Rick Ucker",
+  "versionCode": 1,
+  "versionLabel": "1.1",
+  "watchapp": {
+    "watchface": false
+  },
+  "appKeys": {},
+  "resources": {
+    "media": [
+      {
+        "type": "png-trans",
+        "name": "CRONO",
+        "file": "images/Crono.png"
+      },
+      {
+        "type": "png-trans",
+        "name": "MASAMUNE",
+        "file": "images/Masamune.png"
+      },
+      {
+        "type": "png-trans",
+        "name": "LUCCA",
+        "file": "images/Lucca.png"
+      }
+    ]
+  }
+}

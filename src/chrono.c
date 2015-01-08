@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2014 Rick Ucker
+* Copyright (c) 2013, 2014 Rick Ucker
 *
 * Permission is hereby granted, free of charge, to any person obtaining a
 * copy of this software and associated documentation files (the "Software"),
@@ -7,10 +7,10 @@
 * the rights to use, copy, modify, merge, publish, distribute, sublicense,
 * and/or sell copies of the Software, and to permit persons to whom the
 * Software is furnished to do so, subject to the following conditions:
-#
+*
 * The above copyright notice and this permission notice shall be included in
 * all copies or substantial portions of the Software.
-#
+*
 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
@@ -20,26 +20,18 @@
 * DEALINGS IN THE SOFTWARE.
 */
 
-#include "pebble_os.h"
-#include "pebble_app.h"
-#include "pebble_fonts.h"
-
+#include <pebble.h>
 
 #define MY_UUID { 0x76, 0x9F, 0x72, 0xA8, 0x88, 0x51, 0x4A, 0xA1, 0xB8, 0xD9, 0xFB, 0x74, 0xF5, 0x45, 0xE2, 0xA7 }
-PBL_APP_INFO(MY_UUID,
-             "Chrono", "Rick Ucker",
-             1, 0, /* App version */
-             RESOURCE_ID_MASAMUNE_WHITE,
-             APP_INFO_STANDARD_APP);
 
-static const char * CRONO_SCRIPT_TEXT="I love you very much and I want the world to know that we're a team. Let's take on the world together. Let's make it official. Will you be my Lucca?";
+static const char * CRONO_SCRIPT_TEXT="We've done and seeen a lot up to now. We've traveled to foreign lands and made new friends. We have met challenges. We have leveled up together. We defeated the Dragon Tank! But the world is large and new challenges await.\n\nAre you ready to begin the next quest? Will you travel time and space with me? Will you visit Zeal, the land of dreams and magic with me? Will you battle Magus, come with me to the end of time and back, and find our destinies together?\n\nI love you very much and I want the world to know that we're a team. Let's take on the world together. Let's make it official. Will you be my Lucca?";
 
 Window window;
 BmpContainer image_container_crono;
 BmpContainer image_container_lucca;
 TextLayer textLayer;
 ScrollLayer scrollLayer;
-void handle_init(AppContextRef ctx) {
+void handle_init() {
   GSize text_area_size = GSize(144, 2000);
   window_init(&window, "Main");
   window_set_fullscreen(&window, true);
@@ -77,16 +69,14 @@ void handle_init(AppContextRef ctx) {
   layer_add_child(&window.layer, &scrollLayer.layer);
 }
 
-void handle_deinit(AppContextRef ctx) {
+void handle_deinit() {
  bmp_deinit_container(&image_container_crono);
  bmp_deinit_container(&image_container_lucca);
 }
 
 
-void pbl_main(void *params) {
-  PebbleAppHandlers handlers = {
-    .init_handler = &handle_init,
-    .deinit_handler = &handle_deinit
-  };
- app_event_loop(params, &handlers);
+int main(void) {
+  handle_init();
+  app_event_loop();
+  handle_deinit();
 }
