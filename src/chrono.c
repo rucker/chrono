@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2013, 2014 Rick Ucker
+* Copyright (c) 2013, 2014, 2015 Rick Ucker
 *
 * Permission is hereby granted, free of charge, to any person obtaining a
 * copy of this software and associated documentation files (the "Software"),
@@ -33,12 +33,14 @@ static BitmapLayer *bmpLayerCrono;
 static BitmapLayer *bmpLayerLucca;
 TextLayer *textLayer;
 ScrollLayer *scrollLayer;
+
 void handle_init() {
   GSize text_area_size = GSize(144, 2000);
   window = window_create();
   window_set_fullscreen(window, true);
   window_set_background_color(window, GColorBlack);
-  window_stack_push(window, true /* Animated */);
+  window_stack_push(window, true);
+
   //Crono
   bmpCrono = gbitmap_create_with_resource(RESOURCE_ID_CRONO);
   bmpLayerCrono = bitmap_layer_create(GRect(0,0,72,70));
@@ -51,6 +53,7 @@ void handle_init() {
   bitmap_layer_set_bitmap(bmpLayerLucca, bmpLucca);
   layer_add_child(window_get_root_layer(window), bitmap_layer_get_layer(bmpLayerLucca));
 
+  //Text layer
   textLayer = text_layer_create(GRect(0,0,144,88));
   text_layer_set_text_color(textLayer, GColorWhite);
   text_layer_set_background_color(textLayer, GColorBlack);
@@ -58,11 +61,13 @@ void handle_init() {
   text_layer_set_text(textLayer, CRONO_SCRIPT_TEXT);
   text_layer_set_size(textLayer, text_area_size);
 
+  //Scroll layer
   scrollLayer = scroll_layer_create(GRect(0,70,144,88));
   scroll_layer_set_click_config_onto_window(scrollLayer, window);
   scroll_layer_set_content_size(scrollLayer, text_area_size);
   scroll_layer_add_child(scrollLayer, text_layer_get_layer(textLayer));
 
+  //Calc and set scroll layer size
   GSize used_size = text_layer_get_content_size(textLayer);
   GSize max_size = GSize(used_size.w, used_size.h + 4);
   text_layer_set_size(textLayer, max_size);
