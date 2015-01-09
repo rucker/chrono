@@ -12,17 +12,18 @@
   "resources": {
     "media": [
       {
-        "type": "png-trans",
-        "name": "CRONO",
-        "file": "images/Crono.png"
-      },
-      {
-        "type": "png-trans",
+	"menuIcon": true,
+        "type": "png",
         "name": "MASAMUNE",
         "file": "images/Masamune.png"
       },
       {
-        "type": "png-trans",
+        "type": "png",
+        "name": "CRONO",
+        "file": "images/Crono.png"
+      },
+      {
+        "type": "png",
         "name": "LUCCA",
         "file": "images/Lucca.png"
       }

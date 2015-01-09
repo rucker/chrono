@@ -26,52 +26,57 @@
 
 static const char * CRONO_SCRIPT_TEXT="We've done and seeen a lot up to now. We've traveled to foreign lands and made new friends. We have met challenges. We have leveled up together. We defeated the Dragon Tank! But the world is large and new challenges await.\n\nAre you ready to begin the next quest? Will you travel time and space with me? Will you visit Zeal, the land of dreams and magic with me? Will you battle Magus, come with me to the end of time and back, and find our destinies together?\n\nI love you very much and I want the world to know that we're a team. Let's take on the world together. Let's make it official. Will you be my Lucca?";
 
-Window window;
-BmpContainer image_container_crono;
-BmpContainer image_container_lucca;
-TextLayer textLayer;
-ScrollLayer scrollLayer;
+Window *window;
+GBitmap *bmpCrono;
+GBitmap *bmpLucca;
+static BitmapLayer *bmpLayerCrono;
+static BitmapLayer *bmpLayerLucca;
+TextLayer *textLayer;
+ScrollLayer *scrollLayer;
 void handle_init() {
   GSize text_area_size = GSize(144, 2000);
-  window_init(&window, "Main");
-  window_set_fullscreen(&window, true);
-  window_set_background_color(&window, GColorBlack);
-  window_stack_push(&window, true /* Animated */);
+  window = window_create();
+  window_set_fullscreen(window, true);
+  window_set_background_color(window, GColorBlack);
+  window_stack_push(window, true /* Animated */);
   //Crono
-  resource_init_current_app(&CHRONO_IMAGE_RESOURCES);
-  bmp_init_container(RESOURCE_ID_CRONO_BLACK, &image_container_crono);
-  bitmap_layer_set_alignment(&image_container_crono.layer, GAlignCenter);
-  layer_set_frame((Layer *)&image_container_crono.layer, GRect(0,0,72,70));
-  layer_add_child(&window.layer, (Layer *)&image_container_crono.layer);
+  bmpCrono = gbitmap_create_with_resource(RESOURCE_ID_CRONO);
+  bmpLayerCrono = bitmap_layer_create(GRect(0,0,72,70));
+  bitmap_layer_set_bitmap(bmpLayerCrono, bmpCrono);
+  layer_add_child(window_get_root_layer(window), bitmap_layer_get_layer(bmpLayerCrono));
+
   //Lucca
-  resource_init_current_app(&CHRONO_IMAGE_RESOURCES);
-  bmp_init_container(RESOURCE_ID_LUCCA_BLACK, &image_container_lucca);
-  bitmap_layer_set_alignment(&image_container_lucca.layer, GAlignCenter);
-  layer_set_frame((Layer *)&image_container_lucca.layer, GRect(72,0,72,70));
-  layer_add_child(&window.layer, (Layer *)&image_container_lucca.layer);
+  bmpLucca = gbitmap_create_with_resource(RESOURCE_ID_LUCCA);
+  bmpLayerLucca = bitmap_layer_create(GRect(72,0,72,70));
+  bitmap_layer_set_bitmap(bmpLayerLucca, bmpLucca);
+  layer_add_child(window_get_root_layer(window), bitmap_layer_get_layer(bmpLayerLucca));
 
-  text_layer_init(&textLayer, GRect(0,0,144,88));
-  text_layer_set_text_color(&textLayer, GColorWhite);
-  text_layer_set_background_color(&textLayer, GColorBlack);
-  text_layer_set_font(&textLayer, fonts_get_system_font(FONT_KEY_GOTHIC_14));
-  text_layer_set_text(&textLayer, CRONO_SCRIPT_TEXT);
-  text_layer_set_size(&textLayer, text_area_size);
+  textLayer = text_layer_create(GRect(0,0,144,88));
+  text_layer_set_text_color(textLayer, GColorWhite);
+  text_layer_set_background_color(textLayer, GColorBlack);
+  text_layer_set_font(textLayer, fonts_get_system_font(FONT_KEY_GOTHIC_14));
+  text_layer_set_text(textLayer, CRONO_SCRIPT_TEXT);
+  text_layer_set_size(textLayer, text_area_size);
 
-  scroll_layer_init(&scrollLayer, GRect(0,70,144,88));
-  scroll_layer_set_click_config_onto_window(&scrollLayer, &window);
-  scroll_layer_set_content_size(&scrollLayer, text_area_size);
-  scroll_layer_add_child(&scrollLayer, &textLayer.layer);
+  scrollLayer = scroll_layer_create(GRect(0,70,144,88));
+  scroll_layer_set_click_config_onto_window(scrollLayer, window);
+  scroll_layer_set_content_size(scrollLayer, text_area_size);
+  scroll_layer_add_child(scrollLayer, text_layer_get_layer(textLayer));
 
-  GSize used_size = text_layer_get_max_used_size(app_get_current_graphics_context(), &textLayer);
+  GSize used_size = text_layer_get_content_size(textLayer);
   GSize max_size = GSize(used_size.w, used_size.h + 4);
-  text_layer_set_size(&textLayer, max_size);
-  scroll_layer_set_content_size(&scrollLayer, max_size);
-  layer_add_child(&window.layer, &scrollLayer.layer);
+  text_layer_set_size(textLayer, max_size);
+  scroll_layer_set_content_size(scrollLayer, max_size);
+  layer_add_child(window_get_root_layer(window), scroll_layer_get_layer(scrollLayer));
 }
 
 void handle_deinit() {
- bmp_deinit_container(&image_container_crono);
- bmp_deinit_container(&image_container_lucca);
+  text_layer_destroy(textLayer);
+  window_destroy(window);
+  gbitmap_destroy(bmpCrono);
+  gbitmap_destroy(bmpLucca);
+  bitmap_layer_destroy(bmpLayerCrono);
+  bitmap_layer_destroy(bmpLayerLucca);
 }
 
 
