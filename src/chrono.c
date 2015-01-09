@@ -24,7 +24,7 @@
 
 #define MY_UUID { 0x76, 0x9F, 0x72, 0xA8, 0x88, 0x51, 0x4A, 0xA1, 0xB8, 0xD9, 0xFB, 0x74, 0xF5, 0x45, 0xE2, 0xA7 }
 
-static const char * CRONO_SCRIPT_TEXT="We've done and seeen a lot up to now. We've traveled to foreign lands and made new friends. We have met challenges. We have leveled up together. We defeated the Dragon Tank! But the world is large and new challenges await.\n\nAre you ready to begin the next quest? Will you travel time and space with me? Will you visit Zeal, the land of dreams and magic with me? Will you battle Magus, come with me to the end of time and back, and find our destinies together?\n\nI love you very much and I want the world to know that we're a team. Let's take on the world together. Let's make it official. Will you be my Lucca?";
+static const char * CRONO_SCRIPT_TEXT="I love you very much and I want the world to know that we're a team. Let's take on the world together. Let's make it official. Will you be my Lucca?";
 
 Window *window;
 GBitmap *bmpCrono;
