@@ -1,4 +1,4 @@
-Chrono: a simple Pebble app I wrote for a marriage proposal.
+Chrono: a simple Pebble app I wrote for my marriage proposal.
 -----------------
 PURPOSE
 -----------------
@@ -17,3 +17,13 @@ Most of the original proposal text has been removed from the source code because
 I also am not providing the image files I used because I do not own them.
 
 Enjoy!
+
+Usage
+-----------------
+* Add a file named script.txt, containing your own sappy proposal, to the resources directory.
+
+* Build & install as you normally would.
+
+TO DO
+-----------------
+* Deal with newline characters in resource file.
