@@ -24,8 +24,6 @@
 
 #define MY_UUID { 0x76, 0x9F, 0x72, 0xA8, 0x88, 0x51, 0x4A, 0xA1, 0xB8, 0xD9, 0xFB, 0x74, 0xF5, 0x45, 0xE2, 0xA7 }
 
-static const char * CRONO_SCRIPT_TEXT="I love you very much and I want the world to know that we're a team. Let's take on the world together. Let's make it official. Will you be my Lucca?";
-
 Window *window;
 GBitmap *bmpCrono;
 GBitmap *bmpLucca;
@@ -52,13 +50,19 @@ void handle_init() {
   bmpLayerLucca = bitmap_layer_create(GRect(72,0,72,70));
   bitmap_layer_set_bitmap(bmpLayerLucca, bmpLucca);
   layer_add_child(window_get_root_layer(window), bitmap_layer_get_layer(bmpLayerLucca));
-
+  
+  //Load script
+  ResHandle rhChronoScript = resource_get_handle(RESOURCE_ID_SCRIPT);
+  size_t scriptSize = resource_size(rhChronoScript);
+  uint8_t* scriptBuffer = malloc(scriptSize);
+  resource_load(rhChronoScript, scriptBuffer, scriptSize);
+  
   //Text layer
   textLayer = text_layer_create(GRect(0,0,144,88));
   text_layer_set_text_color(textLayer, GColorWhite);
   text_layer_set_background_color(textLayer, GColorBlack);
   text_layer_set_font(textLayer, fonts_get_system_font(FONT_KEY_GOTHIC_14));
-  text_layer_set_text(textLayer, CRONO_SCRIPT_TEXT);
+  text_layer_set_text(textLayer, (const char *)scriptBuffer);
   text_layer_set_size(textLayer, text_area_size);
 
   //Scroll layer

@@ -26,6 +26,11 @@
         "type": "png",
         "name": "LUCCA",
         "file": "images/Lucca.png"
+      },
+      {
+        "type": "raw",
+        "name": "SCRIPT",
+        "file": "script.txt"
       }
     ]
   }
