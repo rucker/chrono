@@ -31,6 +31,7 @@ static BitmapLayer *bmpLayerCrono;
 static BitmapLayer *bmpLayerLucca;
 TextLayer *textLayer;
 ScrollLayer *scrollLayer;
+uint8_t* scriptBuffer;
 
 void handle_init() {
   GSize text_area_size = GSize(144, 2000);
@@ -54,7 +55,7 @@ void handle_init() {
   //Load script
   ResHandle rhChronoScript = resource_get_handle(RESOURCE_ID_SCRIPT);
   size_t scriptSize = resource_size(rhChronoScript) * 1.01;
-  uint8_t* scriptBuffer = malloc(scriptSize);
+  scriptBuffer = malloc(scriptSize);
   resource_load(rhChronoScript, scriptBuffer, scriptSize);
   
   //Text layer
@@ -86,8 +87,8 @@ void handle_deinit() {
   gbitmap_destroy(bmpLucca);
   bitmap_layer_destroy(bmpLayerCrono);
   bitmap_layer_destroy(bmpLayerLucca);
+  free(scriptBuffer);
 }
-
 
 int main(void) {
   handle_init();
