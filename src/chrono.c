@@ -54,7 +54,7 @@ void handle_init() {
   
   //Load script
   ResHandle rhChronoScript = resource_get_handle(RESOURCE_ID_SCRIPT);
-  size_t scriptSize = resource_size(rhChronoScript) * 1.01;
+  size_t scriptSize = resource_size(rhChronoScript) + 4;
   scriptBuffer = malloc(scriptSize);
   resource_load(rhChronoScript, scriptBuffer, scriptSize);
   
